@@ -1,0 +1,13 @@
+node_modules
+.env*
+!.env.example
+logs
+.vscode/
+!.vscode/launch.json
+.DS_Store
+www/**/*
+src/environments/environment.ts
+newrelic_agent.log
+certs/**/*
+src/environments/environment.ts
+.angular/**/*

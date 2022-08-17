@@ -1,0 +1,43 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "www",
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "downlevelIteration": true,
+    "strictNullChecks": false,
+    "pretty": true,
+    "moduleResolution": "node",
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "exclude": [
+    "node_modules",
+    "www/**/*",
+  ],
+  "include": [
+    "src/**/*",
+  ]
+}

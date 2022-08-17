@@ -1,0 +1,21 @@
+{
+    "name": "runescape-robotjs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start:dev": "nodemon --inspect"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "robotjs": "^0.6.0",
+        "ts-node": "^10.9.1",
+        "tslib": "^2.4.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.6.5",
+        "nodemon": "^2.0.19",
+        "typescript": "^4.7.4"
+    }
+}
