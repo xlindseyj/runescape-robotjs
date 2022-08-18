@@ -3,6 +3,11 @@ export interface Bank {
     y: number;
 }
 
+export interface Coordinates {
+    x: number;
+    y: number;
+}
+
 export interface Inventory {
     slot: number;
     x: number;
