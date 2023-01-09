@@ -1,11 +1,11 @@
 import * as robot from 'robotjs';
 
-import { Inventory } from '../../interfaces';
-import { AntibanService } from '../../services/antiban.service';
-import { ClientService } from '../../services/client.service';
-import { UtilitiesService } from '../../services/utilities.service';
+import { Coordinates, Inventory } from '../../../interfaces';
+import { AntibanService } from '../../../services/antiban.service';
+import { ClientService } from '../../../services/client.service';
+import { UtilitiesService } from '../../../services/utilities.service';
 
-export class Herblore {
+export class Glassblowing {
 
     constructor(private antiban: AntibanService, private client: ClientService, private utils: UtilitiesService) {}
 
@@ -31,6 +31,7 @@ export class Herblore {
             this.makeItems();
             this.utils.increase();
             this.antiban.start();
+            this.utils.sleep(this.utils.getRandomInteger(17000, 25000));
         }
     }
 
@@ -52,7 +53,7 @@ export class Herblore {
                 console.log('[RESETTING LOGIN FLAG]');
                 this.client.isLoggingIn = false;
             }
-            this.client.clickPotionBankTab();
+            this.client.clickEquipementBankTab();
         }
         this.withdrawItem(1);
         this.withdrawItem(2);
@@ -61,16 +62,13 @@ export class Herblore {
     withdrawItem = (item: number): void => {
         if (item === 1) {
             robot.moveMouseSmooth(425, 130);
-            robot.mouseClick('right', false);
-            this.utils.sleep(this.utils.getRandomInteger(500, 1000));
-            robot.moveMouseSmooth(425, 220);
             robot.mouseClick();
-            this.utils.sleep(300);
+            this.utils.sleep(this.utils.getRandomInteger(500, 1000));
         } else {
             robot.moveMouseSmooth(425, 160);
             robot.mouseClick('right', false);
             this.utils.sleep(this.utils.getRandomInteger(500, 1000));
-            robot.moveMouseSmooth(425, 250);
+            robot.moveMouseSmooth(425, 270);
             robot.mouseClick();
             this.utils.sleep(1000);
         }
@@ -94,26 +92,27 @@ export class Herblore {
         this.makeItem(item2);
 
         // Make Items
-        this.client.clickBrewAllButton();
+        this.utils.sleep(300);
+        robot.keyTap('space');
     }
 
     getItem = (item: number) => {
+        let coordinates: Coordinates = null;
         let inventory: Inventory[] = [];
 
         if (item === 1) {
+            coordinates = this.utils.getCoordinatesBetween(566, 250, 590, 267);
             inventory = [
-                { x: 705, y: 332, slot: 12 },
-                { x: 578, y: 366, slot: 13 },
-                { x: 620, y: 368, slot: 14 }
+                { x: coordinates.x, y: coordinates.y, slot: 1 }
             ];
         } else {
+            coordinates = this.utils.getCoordinatesBetween(568, 284, 588, 302);
             inventory = [
-                { x: 578, y: 406, slot: 17 }
+                { x: coordinates.x, y: coordinates.y, slot: 5 }
             ];
         }
         
-        let index: number = this.utils.getRandomInteger(0, inventory.length - 1);
-        console.log(`[ITEM ${item}]: SLOT #${inventory[index].slot}`);
-        return inventory[index];
+        console.log(`[ITEM ${item}]: SLOT #${inventory[0].slot}`);
+        return inventory[0];
     }
 }
